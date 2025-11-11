@@ -2,14 +2,45 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AppShowcase = () => {
   const sectionRef = useRef(null);
-  const rydeRef = useRef(null);
-  const libraryRef = useRef(null);
-  const ycDirectoryRef = useRef(null);
+  const cvRef = useRef(null);
+  const pokemonRef = useRef(null);
+  const tenziesRef = useRef(null);
+  const recipeRef = useRef(null);
+  const memeRef = useRef(null);
+  const wordleRef = useRef(null);
+
+  const projects = {
+    memoryGame: {
+      github: "https://github.com/Zulkifli70/memory-card-game",
+      live: "https://zulkmemorycard.netlify.app/",
+    },
+    cvBuilder: {
+      github: "https://github.com/Zulkifli70/cv-app",
+      live: "https://zulkcvbuilder.netlify.app/",
+    },
+    tenzies: {
+      github: "https://github.com/Zulkifli70/Tenzies",
+      live: "https://zulktenzies.netlify.app/",
+    },
+    recipe: {
+      github: "https://github.com/Zulkifli70/Tenzies",
+      live: "https://zulktenzies.netlify.app/",
+    },
+    meme: {
+      github: "https://github.com/Zulkifli70/Tenzies",
+      live: "https://zulktenzies.netlify.app/",
+    },
+    wordle: {
+      github: "https://github.com/Zulkifli70/Tenzies",
+      live: "https://zulktenzies.netlify.app/",
+    },
+  };
 
   useGSAP(() => {
     // Animation for the main section
@@ -20,7 +51,14 @@ const AppShowcase = () => {
     );
 
     // Animations for each app showcase
-    const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
+    const cards = [
+      pokemonRef.current,
+      cvRef.current,
+      tenziesRef.current,
+      recipeRef.current,
+      memeRef.current,
+      wordleRef.current,
+    ];
 
     cards.forEach((card, index) => {
       gsap.fromTo(
@@ -47,38 +85,206 @@ const AppShowcase = () => {
     <div id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
         <div className="showcaselayout">
-          <div ref={rydeRef} className="first-project-wrapper">
+          <div ref={pokemonRef} className="first-project-wrapper">
             <div className="image-wrapper">
-              <img src="/images/project1.png" alt="Ryde App Interface" />
+              <img
+                src="/images/project/zulkmemorycard.jpeg"
+                alt="Memory App Game"
+              />
             </div>
             <div className="text-content">
-              <h2>
-                On-Demand Rides Made Simple with a Powerful, User-Friendly App
-                called Ryde
-              </h2>
+              <div className="flex items-center justify-between">
+                <h2>Pokemon Memory Game</h2>
+                <div className="flex gap-3">
+                  <a
+                    href={projects.memoryGame.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors"
+                    aria-label="View GitHub Repository"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={projects.memoryGame.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors"
+                    aria-label="View Live Website"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                </div>
+              </div>
               <p className="text-white-50 md:text-xl">
-                An app built with React Native, Expo, & TailwindCSS for a fast,
+                Web Game built with React & TailwindCSS for a fast,
                 user-friendly experience.
               </p>
             </div>
           </div>
 
-          <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
+          <div className="project-list-wrapper overflow-hidden mb-10">
+            <div className="project" ref={cvRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
                 <img
-                  src="/images/project2.png"
-                  alt="Library Management Platform"
+                  src="/images/project/zulkcvbuilder.jpeg"
+                  alt="CV Builder"
                 />
               </div>
-              <h2>The Library Management Platform</h2>
+              <div className="flex items-center justify-between w-full">
+                <h2>CV Builder</h2>
+                <div className="flex gap-3">
+                  <a
+                    href={projects.cvBuilder.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View GitHub Repository"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={projects.cvBuilder.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View Live Website"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="project" ref={ycDirectoryRef}>
+            <div className="project" ref={tenziesRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project3.png" alt="YC Directory App" />
+                <img
+                  src="/images/project/zulktenzies.jpeg"
+                  alt="Tenzies Game"
+                />
               </div>
-              <h2>YC Directory - A Startup Showcase App</h2>
+              <div className="flex items-center justify-between w-full">
+                <h2>Tenzies</h2>
+                <div className="flex gap-3">
+                  <a
+                    href={projects.tenzies.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View GitHub Repository"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={projects.tenzies.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View Live Website"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 2 */}
+
+        <div className="showcaselayout">
+          <div className="project-list-wrapper overflow-hidden">
+            <div className="project" ref={recipeRef}>
+              <div className="image-wrapper bg-[#FFEFDB]">
+                <img src="/images/project/recipe.jpeg" alt="CV Builder" />
+              </div>
+              <div className="flex items-center justify-between w-full">
+                <h2>Recipe Generator</h2>
+                <div className="flex gap-3">
+                  <a
+                    href={projects.recipe.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View GitHub Repository"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={projects.recipe.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View Live Website"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="project" ref={memeRef}>
+              <div className="image-wrapper bg-[#FFE7EB]">
+                <img src="/images/project/meme.jpg" alt="Tenzies Game" />
+              </div>
+              <div className="flex items-center justify-between w-full">
+                <h2>Meme Generator</h2>
+                <div className="flex gap-3">
+                  <a
+                    href={projects.meme.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View GitHub Repository"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={projects.meme.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit hover:opacity-70 transition-opacity"
+                    aria-label="View Live Website"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div ref={wordleRef} className="first-project-wrapper">
+            <div className="image-wrapper">
+              <img src="/images/project/wordlee.jpeg" alt="Memory App Game" />
+            </div>
+            <div className="text-content">
+              <div className="flex items-center justify-between">
+                <h2>Wordle Game</h2>
+                <div className="flex gap-3">
+                  <a
+                    href={projects.wordle.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors"
+                    aria-label="View GitHub Repository"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                  <a
+                    href={projects.wordle.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-gray-300 transition-colors"
+                    aria-label="View Live Website"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                </div>
+              </div>
+              <p className="text-white-50 md:text-xl">
+                Web Game built with React & TailwindCSS for a fast,
+                user-friendly experience.
+              </p>
             </div>
           </div>
         </div>
