@@ -155,15 +155,16 @@ const techStackIcons = [
 const expCards = [
   {
     review:
-      "Zulk brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+      "Zulk consistently demonstrated strong creativity and technical versatility during his internship. He played a good role in bridging design and development, helping the team translate complex UI/UX concepts into functional, responsive interfaces. His proactive attitude, attention to detail, and collaborative mindset made a lasting impact on our workflow and product quality.",
     imgPath: "/images/jaya.png",
     logoPath: "/images/jayantara.png",
     title: "UI UX Designer (Internship)",
     date: "September 2022 - February 2023",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Conducted user research and stakeholder interviews to gather insights for UI/UX design decisions.",
+      "Created wireframes, prototypes, and high-fidelity designs using Figma to visualize and validate user flows.",
+      "Collaborated with cross-functional teams to define features and translate them into intuitive user experiences.",
+      "Developed and maintained design systems to ensure consistency and serve as guidelines for developers.",
     ],
   },
 ];

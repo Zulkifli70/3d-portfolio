@@ -29,16 +29,16 @@ const AppShowcase = () => {
       live: "https://zulktenzies.netlify.app/",
     },
     recipe: {
-      github: "https://github.com/Zulkifli70/Tenzies",
-      live: "https://zulktenzies.netlify.app/",
+      github: "https://github.com/Zulkifli70/Recipe-Generator",
+      live: "#",
     },
     meme: {
-      github: "https://github.com/Zulkifli70/Tenzies",
-      live: "https://zulktenzies.netlify.app/",
+      github: "https://github.com/Zulkifli70/Meme-Generator",
+      live: "https://zulkmeme.netlify.app/",
     },
     wordle: {
-      github: "https://github.com/Zulkifli70/Tenzies",
-      live: "https://zulktenzies.netlify.app/",
+      github: "https://github.com/Zulkifli70/Wordle",
+      live: "https://zulkwordle.netlify.app/",
     },
   };
 
@@ -210,7 +210,7 @@ const AppShowcase = () => {
                   >
                     <FaGithub size={24} />
                   </a>
-                  <a
+                  {/* <a
                     href={projects.recipe.live}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -218,7 +218,7 @@ const AppShowcase = () => {
                     aria-label="View Live Website"
                   >
                     <FaExternalLinkAlt size={24} />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
