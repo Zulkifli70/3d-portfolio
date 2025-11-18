@@ -11,7 +11,7 @@ const AppShowcase = () => {
   const cvRef = useRef(null);
   const pokemonRef = useRef(null);
   const tenziesRef = useRef(null);
-  const recipeRef = useRef(null);
+  const genshinRef = useRef(null);
   const memeRef = useRef(null);
   const wordleRef = useRef(null);
 
@@ -28,9 +28,9 @@ const AppShowcase = () => {
       github: "https://github.com/Zulkifli70/Tenzies",
       live: "https://zulktenzies.netlify.app/",
     },
-    recipe: {
-      github: "https://github.com/Zulkifli70/Recipe-Generator",
-      live: "#",
+    genshin: {
+      github: "https://github.com/Zulkifli70/Genshin-copy",
+      live: "https://zulkgenshin.netlify.app/",
     },
     meme: {
       github: "https://github.com/Zulkifli70/Meme-Generator",
@@ -55,7 +55,7 @@ const AppShowcase = () => {
       pokemonRef.current,
       cvRef.current,
       tenziesRef.current,
-      recipeRef.current,
+      genshinRef.current,
       memeRef.current,
       wordleRef.current,
     ];
@@ -194,15 +194,15 @@ const AppShowcase = () => {
 
         <div className="showcaselayout">
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={recipeRef}>
+            <div className="project" ref={genshinRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img src="/images/project/recipe.jpeg" alt="CV Builder" />
+                <img src="/images/project/genshin.jpeg" alt="Genshin" />
               </div>
               <div className="flex items-center justify-between w-full">
-                <h2>Recipe Generator</h2>
+                <h2>Genshin impact</h2>
                 <div className="flex gap-3">
                   <a
-                    href={projects.recipe.github}
+                    href={projects.genshin.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
@@ -210,15 +210,15 @@ const AppShowcase = () => {
                   >
                     <FaGithub size={24} />
                   </a>
-                  {/* <a
-                    href={projects.recipe.live}
+                  <a
+                    href={projects.genshin.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
                     aria-label="View Live Website"
                   >
                     <FaExternalLinkAlt size={24} />
-                  </a> */}
+                  </a>
                 </div>
               </div>
             </div>
