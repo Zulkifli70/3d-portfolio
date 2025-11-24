@@ -30,7 +30,7 @@ const AppShowcase = () => {
     },
     genshin: {
       github: "https://github.com/Zulkifli70/Genshin-copy",
-      live: "https://zulkgenshin.netlify.app/",
+      live: "https://genshin-duplicate.vercel.app/",
     },
     meme: {
       github: "https://github.com/Zulkifli70/Meme-Generator",
