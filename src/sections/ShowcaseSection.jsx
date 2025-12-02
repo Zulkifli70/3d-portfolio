@@ -12,7 +12,7 @@ const AppShowcase = () => {
   const pokemonRef = useRef(null);
   const tenziesRef = useRef(null);
   const genshinRef = useRef(null);
-  const memeRef = useRef(null);
+  const printerRef = useRef(null);
   const wordleRef = useRef(null);
 
   const projects = {
@@ -32,9 +32,9 @@ const AppShowcase = () => {
       github: "https://github.com/Zulkifli70/Genshin-copy",
       live: "https://genshin-duplicate.vercel.app/",
     },
-    meme: {
-      github: "https://github.com/Zulkifli70/Meme-Generator",
-      live: "https://zulkmeme.netlify.app/",
+    printer: {
+      github: "https://github.com/Zulkifli70/next-project",
+      live: "https://next-project-eta-vert.vercel.app/3d-models",
     },
     wordle: {
       github: "https://github.com/Zulkifli70/Wordle",
@@ -56,7 +56,7 @@ const AppShowcase = () => {
       cvRef.current,
       tenziesRef.current,
       genshinRef.current,
-      memeRef.current,
+      printerRef.current,
       wordleRef.current,
     ];
 
@@ -223,15 +223,15 @@ const AppShowcase = () => {
               </div>
             </div>
 
-            <div className="project" ref={memeRef}>
+            <div className="project" ref={printerRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project/meme.jpg" alt="Tenzies Game" />
+                <img src="/images/project/printer.jpg" alt="3D Printer web" />
               </div>
               <div className="flex items-center justify-between w-full">
                 <h2>Meme Generator</h2>
                 <div className="flex gap-3">
                   <a
-                    href={projects.meme.github}
+                    href={projects.printer.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
@@ -240,7 +240,7 @@ const AppShowcase = () => {
                     <FaGithub size={24} />
                   </a>
                   <a
-                    href={projects.meme.live}
+                    href={projects.printer.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
