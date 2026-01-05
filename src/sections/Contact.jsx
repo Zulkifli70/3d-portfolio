@@ -2,7 +2,11 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
-import ContactExperience from "../components/models/contact/ContactExperience";
+import { lazy, Suspense } from "react";
+
+const ContactExperience = lazy(() =>
+  import("../components/models/contact/ContactExperience")
+);
 
 const Contact = () => {
   const formRef = useRef(null);
@@ -46,9 +50,9 @@ const Contact = () => {
           title="Get in Touch – Let’s Connect"
           sub="💬 Have a question or want to hire me? Let’s talk! 🚀"
         />
-        <div className="grid-12-cols mt-16">
+        <div className="grid-12-cols mt-16 flex justify-center">
           <div className="xl:col-span-5">
-            <div className="flex-center card-border rounded-xl p-10">
+            <div className="flex-center card-border rounded-xl p-10 min-w-3xl">
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
@@ -105,11 +109,6 @@ const Contact = () => {
                   </div>
                 </button>
               </form>
-            </div>
-          </div>
-          <div className="xl:col-span-7 min-h-96">
-            <div className="bg-[#363252] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
-              <ContactExperience />
             </div>
           </div>
         </div>
