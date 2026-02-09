@@ -10,7 +10,7 @@ const AppShowcase = () => {
   const sectionRef = useRef(null);
   const cvRef = useRef(null);
   const pokemonRef = useRef(null);
-  const tenziesRef = useRef(null);
+  const tokoRef = useRef(null);
   const genshinRef = useRef(null);
   const printerRef = useRef(null);
   const wordleRef = useRef(null);
@@ -24,9 +24,9 @@ const AppShowcase = () => {
       github: "https://github.com/Zulkifli70/cv-app",
       live: "https://zulkcvbuilder.netlify.app/",
     },
-    tenzies: {
-      github: "https://github.com/Zulkifli70/Tenzies",
-      live: "https://zulktenzies.netlify.app/",
+    toko: {
+      github: "https://github.com/Zulkifli70/TokoBuRohani",
+      live: "https://zulktoko.netlify.app/",
     },
     genshin: {
       github: "https://github.com/Zulkifli70/Genshin-copy",
@@ -37,7 +37,7 @@ const AppShowcase = () => {
       live: "https://next-project-eta-vert.vercel.app/3d-models",
     },
     wordle: {
-      github: "https://github.com/Zulkifli70/Wordle",
+      github: "https://github.com/Zulkifli70/react-ts",
       live: "https://zulkwordle.netlify.app/",
     },
   };
@@ -47,14 +47,14 @@ const AppShowcase = () => {
     gsap.fromTo(
       sectionRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 1.5 }
+      { opacity: 1, duration: 1.5 },
     );
 
     // Animations for each app showcase
     const cards = [
       pokemonRef.current,
       cvRef.current,
-      tenziesRef.current,
+      tokoRef.current,
       genshinRef.current,
       printerRef.current,
       wordleRef.current,
@@ -76,7 +76,7 @@ const AppShowcase = () => {
             trigger: card,
             start: "top bottom-=100",
           },
-        }
+        },
       );
     });
   }, []);
@@ -88,7 +88,7 @@ const AppShowcase = () => {
           <div ref={pokemonRef} className="first-project-wrapper">
             <div className="image-wrapper">
               <img
-                src="/images/project/zulkmemorycard.jpeg"
+                src="/images/project/zulkmemory.jpeg"
                 alt="Memory App Game"
               />
             </div>
@@ -126,10 +126,7 @@ const AppShowcase = () => {
           <div className="project-list-wrapper overflow-hidden mb-10">
             <div className="project" ref={cvRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img
-                  src="/images/project/zulkcvbuilder.jpeg"
-                  alt="CV Builder"
-                />
+                <img src="/images/project/zulkcv.jpeg" alt="CV Builder" />
               </div>
               <div className="flex items-center justify-between w-full">
                 <h2>CV Builder</h2>
@@ -156,18 +153,15 @@ const AppShowcase = () => {
               </div>
             </div>
 
-            <div className="project" ref={tenziesRef}>
+            <div className="project" ref={tokoRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img
-                  src="/images/project/zulktenzies.jpeg"
-                  alt="Tenzies Game"
-                />
+                <img src="/images/project/toko.png" alt="Tenzies Game" />
               </div>
               <div className="flex items-center justify-between w-full">
-                <h2>Tenzies</h2>
+                <h2>Grocery store website</h2>
                 <div className="flex gap-3">
                   <a
-                    href={projects.tenzies.github}
+                    href={projects.toko.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
@@ -176,7 +170,7 @@ const AppShowcase = () => {
                     <FaGithub size={24} />
                   </a>
                   <a
-                    href={projects.tenzies.live}
+                    href={projects.toko.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
@@ -228,7 +222,7 @@ const AppShowcase = () => {
                 <img src="/images/project/printer.jpg" alt="3D Printer web" />
               </div>
               <div className="flex items-center justify-between w-full">
-                <h2>Meme Generator</h2>
+                <h2>Print Forge 3D Website</h2>
                 <div className="flex gap-3">
                   <a
                     href={projects.printer.github}
@@ -255,7 +249,10 @@ const AppShowcase = () => {
 
           <div ref={wordleRef} className="first-project-wrapper">
             <div className="image-wrapper">
-              <img src="/images/project/wordlee.jpeg" alt="Memory App Game" />
+              <img
+                src="/images/project/zulkassembly.jpg"
+                alt="Memory App Game"
+              />
             </div>
             <div className="text-content">
               <div className="flex items-center justify-between">
