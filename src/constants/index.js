@@ -120,8 +120,8 @@ const techStackImgs = [
     imgPath: "/images/logos/Node.js.png",
   },
   {
-    name: "MySQL",
-    imgPath: "/images/logos/MySQL.png",
+    name: "MongoDB",
+    imgPath: "/images/logos/mongodb.png",
   },
   {
     name: "Figma",

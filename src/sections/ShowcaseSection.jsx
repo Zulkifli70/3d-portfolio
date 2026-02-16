@@ -11,7 +11,7 @@ const AppShowcase = () => {
   const cvRef = useRef(null);
   const pokemonRef = useRef(null);
   const tokoRef = useRef(null);
-  const genshinRef = useRef(null);
+  const expenseRef = useRef(null);
   const printerRef = useRef(null);
   const wordleRef = useRef(null);
 
@@ -28,9 +28,9 @@ const AppShowcase = () => {
       github: "https://github.com/Zulkifli70/TokoBuRohani",
       live: "https://zulktoko.netlify.app/",
     },
-    genshin: {
-      github: "https://github.com/Zulkifli70/Genshin-copy",
-      live: "https://genshin-duplicate.vercel.app/",
+    expense: {
+      github: "https://github.com/Zulkifli70/expense-tracker",
+      live: "https://zulk-expense.vercel.app/",
     },
     printer: {
       github: "https://github.com/Zulkifli70/next-project",
@@ -55,7 +55,7 @@ const AppShowcase = () => {
       pokemonRef.current,
       cvRef.current,
       tokoRef.current,
-      genshinRef.current,
+      expenseRef.current,
       printerRef.current,
       wordleRef.current,
     ];
@@ -188,15 +188,18 @@ const AppShowcase = () => {
 
         <div className="showcaselayout">
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={genshinRef}>
+            <div className="project" ref={expenseRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img src="/images/project/genshin.jpeg" alt="Genshin" />
+                <img
+                  src="/images/project/expense.png"
+                  alt="expense tracker website"
+                />
               </div>
               <div className="flex items-center justify-between w-full">
-                <h2>Genshin impact</h2>
+                <h2>Expense Tracker</h2>
                 <div className="flex gap-3">
                   <a
-                    href={projects.genshin.github}
+                    href={projects.expense.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
@@ -205,7 +208,7 @@ const AppShowcase = () => {
                     <FaGithub size={24} />
                   </a>
                   <a
-                    href={projects.genshin.live}
+                    href={projects.expense.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-inherit hover:opacity-70 transition-opacity"
