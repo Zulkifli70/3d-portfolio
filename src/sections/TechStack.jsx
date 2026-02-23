@@ -1,54 +1,61 @@
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import TitleHeader from "../components/TitleHeader";
-import TechIconCardExperience from "../components/models/tech_logos/TechIconCardExperience";
 import { techStackImgs } from "../constants";
-// import { techStackImgs } from "../constants";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TechStack = () => {
-  // Animate the tech cards in the skills section
-  useGSAP(() => {
-    // This animation is triggered when the user scrolls to the #skills wrapper
-    // The animation starts when the top of the wrapper is at the center of the screen
-    // The animation is staggered, meaning each card will animate in sequence
-    // The animation ease is set to "power2.inOut", which is a slow-in fast-out ease
-    gsap.fromTo(
-      ".tech-card",
-      {
-        // Initial values
-        y: 50, // Move the cards down by 50px
-        opacity: 0, // Set the opacity to 0
-      },
-      {
-        // Final values
-        y: 0, // Move the cards back to the top
-        opacity: 1, // Set the opacity to 1
-        duration: 1, // Duration of the animation
-        ease: "power2.inOut", // Ease of the animation
-        stagger: 0.2, // Stagger the animation by 0.2 seconds
-        scrollTrigger: {
-          trigger: "#skills", // Trigger the animation when the user scrolls to the #skills wrapper
-          start: "top center", // Start the animation when the top of the wrapper is at the center of the screen
-        },
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const cards = gsap.utils.toArray(".tech-card");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (prefersReducedMotion) {
+        gsap.set(cards, { opacity: 1, y: 0, scale: 1 });
+        return;
       }
-    );
-  });
+
+      gsap.set(cards, {
+        y: 42,
+        opacity: 0,
+        scale: 0.96,
+        willChange: "transform, opacity",
+      });
+
+      gsap.to(cards, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 78%",
+          once: true,
+        },
+        onComplete: () => gsap.set(cards, { clearProps: "willChange" }),
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <div id="skills" className="flex-center section-padding">
+    <div id="skills" ref={sectionRef} className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="How I Can Contribute & My Key Skills"
-          sub="🤝 What I Bring to the Table"
+          sub="What I Bring to the Table"
         />
         <div className="tech-grid">
-          {/* Loop through the techStackIcons array and create a component for each item. 
-              The key is set to the name of the tech stack icon, and the classnames are set to 
-              card-border, tech-card, overflow-hidden, and group. The xl:rounded-full and rounded-lg 
-              classes are only applied on larger screens. */}
-
-          {/* This is for the img part */}
           {techStackImgs.map((techStackIcon, index) => (
             <div
               key={index}

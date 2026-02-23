@@ -42,44 +42,49 @@ const AppShowcase = () => {
     },
   };
 
-  useGSAP(() => {
-    // Animation for the main section
-    gsap.fromTo(
-      sectionRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1.5 },
-    );
-
-    // Animations for each app showcase
-    const cards = [
-      pokemonRef.current,
-      cvRef.current,
-      tokoRef.current,
-      expenseRef.current,
-      printerRef.current,
-      wordleRef.current,
-    ];
-
-    cards.forEach((card, index) => {
+  useGSAP(
+    () => {
+      // Animation for the main section
       gsap.fromTo(
-        card,
-        {
-          y: 50,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: 0.3 * (index + 1),
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom-=100",
-          },
-        },
+        sectionRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1.5 }
       );
-    });
-  }, []);
+
+      // Animations for each app showcase
+      const cards = [
+        pokemonRef.current,
+        cvRef.current,
+        tokoRef.current,
+        expenseRef.current,
+        printerRef.current,
+        wordleRef.current,
+      ].filter(Boolean);
+
+      cards.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          {
+            y: 50,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            delay: 0.3 * (index + 1),
+            overwrite: "auto",
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=100",
+              once: true,
+            },
+          }
+        );
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <div id="work" ref={sectionRef} className="app-showcase">

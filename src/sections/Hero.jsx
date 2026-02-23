@@ -1,26 +1,72 @@
+import { lazy, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
 import { words } from "../constants";
-import { lazy, Suspense } from "react";
 
 const HeroExperience = lazy(() =>
   import("../components/models/hero_models/HeroExperience")
 );
 
 const Hero = () => {
-  useGSAP(() => {
-    gsap.fromTo(
-      ".hero-text h1",
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
-    );
-  });
+  const heroRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (prefersReducedMotion) {
+        gsap.set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
+          opacity: 1,
+          y: 0,
+        });
+        return;
+      }
+
+      gsap.set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
+        willChange: "transform, opacity",
+      });
+
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+      });
+
+      tl.from(".hero-text h1", {
+        y: 56,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+      })
+        .from(
+          ".hero-copy",
+          {
+            y: 20,
+            opacity: 0,
+            duration: 0.55,
+          },
+          "-=0.35"
+        )
+        .from(
+          ".cta-wrapper",
+          {
+            y: 18,
+            opacity: 0,
+            duration: 0.5,
+          },
+          "-=0.3"
+        )
+        .set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
+          clearProps: "willChange",
+        });
+    },
+    { scope: heroRef }
+  );
 
   return (
-    <section id="hero" className="relative overflow-hidden">
+    <section id="hero" ref={heroRef} className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
         <img src="/images/bg.png" alt="" />
       </div>
@@ -54,8 +100,8 @@ const Hero = () => {
               <h1>that Deliver Results</h1>
             </div>
 
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I’m Zulk, a frontend developer with a passion for code.
+            <p className="hero-copy text-white-50 md:text-xl relative z-10 pointer-events-none">
+              Hi, I&apos;m Zulk, a frontend developer with a passion for code.
             </p>
 
             <Button
