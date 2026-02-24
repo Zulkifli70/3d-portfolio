@@ -5,8 +5,8 @@ import gsap from "gsap";
 import Button from "../components/Button";
 import { words } from "../constants";
 
-const HeroExperience = lazy(() =>
-  import("../components/models/hero_models/HeroExperience")
+const HeroExperience = lazy(
+  () => import("../components/models/hero_models/HeroExperience"),
 );
 
 const Hero = () => {
@@ -15,7 +15,7 @@ const Hero = () => {
   useGSAP(
     () => {
       const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
 
       if (prefersReducedMotion) {
@@ -47,7 +47,7 @@ const Hero = () => {
             opacity: 0,
             duration: 0.55,
           },
-          "-=0.35"
+          "-=0.35",
         )
         .from(
           ".cta-wrapper",
@@ -56,19 +56,24 @@ const Hero = () => {
             opacity: 0,
             duration: 0.5,
           },
-          "-=0.3"
+          "-=0.3",
         )
         .set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
           clearProps: "willChange",
         });
     },
-    { scope: heroRef }
+    { scope: heroRef },
   );
 
   return (
     <section id="hero" ref={heroRef} className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="" />
+        <img
+          src="/images/bg.png"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
 
       <div className="hero-layout">

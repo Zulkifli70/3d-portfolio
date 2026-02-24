@@ -34,24 +34,51 @@ const Experience = () => {
           once: true,
         });
 
-        // Keep original timeline effect but avoid expensive onUpdate + gsap.set loop.
-        gsap.fromTo(
-          ".timeline",
-          {
-            scaleY: 1,
-            transformOrigin: "bottom bottom",
+        // Animate gradient-line: draws top→bottom on enter, disappears bottom→top on leave
+        // Uses a timeline so the line grows in during the first half of the scroll
+        // and shrinks back from the bottom during the second half
+        const gradientTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#experience",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true,
           },
-          {
-            scaleY: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".timeline",
-              start: "top center",
-              end: "70% center",
-              scrub: 0.5,
-            },
-          }
-        );
+        });
+        gradientTl
+          .fromTo(
+            ".gradient-line",
+            { scaleY: 0, transformOrigin: "top center" },
+            { scaleY: 1, ease: "none" },
+          )
+          .fromTo(
+            ".gradient-line",
+            { scaleY: 1, transformOrigin: "bottom center" },
+            { scaleY: 0, ease: "none" },
+          );
+
+        // Animate timeline-logo: slides in from top on enter, slides out to top on leave
+        // Uses a timeline so enter and exit are handled in one scrubbed sequence
+        const logoTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#experience",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true,
+          },
+        });
+        logoTl
+          .fromTo(
+            ".timeline-logo",
+            { yPercent: -60, opacity: 0 },
+            { yPercent: 0, opacity: 1, ease: "none" },
+          )
+          .to(".timeline-logo", { yPercent: 0, opacity: 1, ease: "none" })
+          .fromTo(
+            ".timeline-logo",
+            { yPercent: 0, opacity: 1 },
+            { yPercent: -60, opacity: 0, ease: "none" },
+          );
 
         // Batch text animations
         ScrollTrigger.batch(".expText", {
@@ -71,7 +98,7 @@ const Experience = () => {
 
       return () => mm.revert();
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -99,7 +126,6 @@ const Experience = () => {
                 <div className="xl:w-4/6">
                   <div className="flex items-start">
                     <div className="timeline-wrapper">
-                      <div className="timeline" />
                       <div className="gradient-line w-1 h-full" />
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
@@ -118,7 +144,7 @@ const Experience = () => {
                               <li key={index} className="text-lg">
                                 {responsibility}
                               </li>
-                            )
+                            ),
                           )}
                         </ul>
                       </div>

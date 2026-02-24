@@ -1,10 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/images/person.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zulk &mdash;&mdash; Portfolio</title>
+    <!-- Preconnect to Google Fonts to reduce DNS lookup time -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload the hero background image (above the fold) -->
+    <link rel="preload" as="image" href="/images/bg.png" />
+    <!-- Preload the 3D room model (used immediately on load) -->
+    <link
+      rel="preload"
+      as="fetch"
+      href="/models/optimized-room.glb"
+      crossorigin
+    />
   </head>
   <body>
     <div id="root"></div>

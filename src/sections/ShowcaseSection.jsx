@@ -44,13 +44,6 @@ const AppShowcase = () => {
 
   useGSAP(
     () => {
-      // Animation for the main section
-      gsap.fromTo(
-        sectionRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 1.5 }
-      );
-
       // Animations for each app showcase
       const cards = [
         pokemonRef.current,
@@ -62,28 +55,31 @@ const AppShowcase = () => {
       ].filter(Boolean);
 
       cards.forEach((card, index) => {
+        gsap.set(card, { willChange: "transform, opacity" });
         gsap.fromTo(
           card,
           {
-            y: 50,
+            y: 40,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            delay: 0.3 * (index + 1),
+            duration: 0.7,
+            delay: 0.15 * index,
+            ease: "power2.out",
             overwrite: "auto",
             scrollTrigger: {
               trigger: card,
-              start: "top bottom-=100",
+              start: "top bottom-=80",
               once: true,
             },
-          }
+            onComplete: () => gsap.set(card, { clearProps: "willChange" }),
+          },
         );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -95,6 +91,8 @@ const AppShowcase = () => {
               <img
                 src="/images/project/zulkmemory.jpeg"
                 alt="Memory App Game"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="text-content">
@@ -131,7 +129,12 @@ const AppShowcase = () => {
           <div className="project-list-wrapper overflow-hidden mb-10">
             <div className="project" ref={cvRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img src="/images/project/zulkcv.jpeg" alt="CV Builder" />
+                <img
+                  src="/images/project/zulkcv.jpeg"
+                  alt="CV Builder"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="flex items-center justify-between w-full">
                 <h2>CV Builder</h2>
@@ -160,7 +163,12 @@ const AppShowcase = () => {
 
             <div className="project" ref={tokoRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project/toko.png" alt="Tenzies Game" />
+                <img
+                  src="/images/project/toko.png"
+                  alt="Tenzies Game"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="flex items-center justify-between w-full">
                 <h2>Grocery store website</h2>
@@ -198,6 +206,8 @@ const AppShowcase = () => {
                 <img
                   src="/images/project/expense.png"
                   alt="expense tracker website"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="flex items-center justify-between w-full">
@@ -227,7 +237,12 @@ const AppShowcase = () => {
 
             <div className="project" ref={printerRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project/printer.jpg" alt="3D Printer web" />
+                <img
+                  src="/images/project/printer.jpg"
+                  alt="3D Printer web"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="flex items-center justify-between w-full">
                 <h2>Print Forge 3D Website</h2>
@@ -259,7 +274,9 @@ const AppShowcase = () => {
             <div className="image-wrapper">
               <img
                 src="/images/project/zulkassembly.jpg"
-                alt="Memory App Game"
+                alt="Wordle Game"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="text-content">
