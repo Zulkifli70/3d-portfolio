@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col justify-center">
           <p className="text-center md:text-end">
-            Â© {new Date().getFullYear()} Zulkifli Firdausi. All rights reserved.
+            © {new Date().getFullYear()} Zulkifli Firdausi. All rights reserved.
           </p>
         </div>
       </div>
@@ -25,3 +25,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

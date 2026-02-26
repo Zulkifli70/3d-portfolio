@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { FaPaperPlane } from "react-icons/fa";
 
 import TitleHeader from "../components/TitleHeader";
 
@@ -42,8 +43,8 @@ const Contact = () => {
     <section id="contact" className="flex-center section-padding">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
-          title="Get in Touch – Let’s Connect"
-          sub="💬 Have a question or want to hire me? Let’s talk! 🚀"
+          title="Get in Touch - Let's Connect"
+          sub="Have a question or want to hire me? Let's talk."
         />
         <div className="grid-12-cols mt-16 flex justify-center">
           <div className="xl:col-span-5">
@@ -61,7 +62,7 @@ const Contact = () => {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="What’s your good name?"
+                    placeholder="What's your good name?"
                     required
                   />
                 </div>
@@ -74,7 +75,7 @@ const Contact = () => {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="What’s your email address?"
+                    placeholder="What's your email address?"
                     required
                   />
                 </div>
@@ -99,7 +100,10 @@ const Contact = () => {
                       {loading ? "Sending..." : "Send Message"}
                     </p>
                     <div className="arrow-wrapper">
-                      <img src="/images/arrow-down.svg" alt="arrow" />
+                      <FaPaperPlane
+                        aria-hidden="true"
+                        className="text-[#0f172a] text-sm transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                      />
                     </div>
                   </div>
                 </button>
@@ -113,3 +117,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

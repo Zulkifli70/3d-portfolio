@@ -14,11 +14,36 @@ const Experience = () => {
 
   useGSAP(
     () => {
-      // Use matchMedia for better performance
       const mm = gsap.matchMedia();
+      const lineEls = gsap.utils.toArray(".gradient-line");
+
+      gsap.set(lineEls, { scaleY: 0, transformOrigin: "top center" });
+
+      ScrollTrigger.create({
+        trigger: "#experience",
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const p = self.progress;
+          let scaleY = 0;
+
+          if (p <= 0.35) {
+            scaleY = p / 0.35;
+          } else if (p <= 0.65) {
+            scaleY = 1;
+          } else {
+            scaleY = 1 - (p - 0.65) / 0.35;
+          }
+
+          gsap.set(lineEls, { scaleY: Math.max(0, Math.min(1, scaleY)) });
+        },
+      });
+
+      requestAnimationFrame(() => ScrollTrigger.refresh());
 
       mm.add("(min-width: 768px)", () => {
-        // Batch animations for better performance
         ScrollTrigger.batch(".timeline-card", {
           onEnter: (elements) => {
             gsap.from(elements, {
@@ -34,31 +59,6 @@ const Experience = () => {
           once: true,
         });
 
-        // Animate gradient-line: draws top→bottom on enter, disappears bottom→top on leave
-        // Uses a timeline so the line grows in during the first half of the scroll
-        // and shrinks back from the bottom during the second half
-        const gradientTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: "#experience",
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: true,
-          },
-        });
-        gradientTl
-          .fromTo(
-            ".gradient-line",
-            { scaleY: 0, transformOrigin: "top center" },
-            { scaleY: 1, ease: "none" },
-          )
-          .fromTo(
-            ".gradient-line",
-            { scaleY: 1, transformOrigin: "bottom center" },
-            { scaleY: 0, ease: "none" },
-          );
-
-        // Animate timeline-logo: slides in from top on enter, slides out to top on leave
-        // Uses a timeline so enter and exit are handled in one scrubbed sequence
         const logoTl = gsap.timeline({
           scrollTrigger: {
             trigger: "#experience",
@@ -67,6 +67,7 @@ const Experience = () => {
             scrub: true,
           },
         });
+
         logoTl
           .fromTo(
             ".timeline-logo",
@@ -80,7 +81,6 @@ const Experience = () => {
             { yPercent: -60, opacity: 0, ease: "none" },
           );
 
-        // Batch text animations
         ScrollTrigger.batch(".expText", {
           onEnter: (elements) => {
             gsap.from(elements, {
@@ -135,17 +135,13 @@ const Experience = () => {
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>
                         <p className="my-5 text-white-50">Date: {card.date}</p>
-                        <p className="text-[#839CB5] italic">
-                          Responsibilities
-                        </p>
+                        <p className="text-[#839CB5] italic">Responsibilities</p>
                         <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
-                          {card.responsibilities.map(
-                            (responsibility, index) => (
-                              <li key={index} className="text-lg">
-                                {responsibility}
-                              </li>
-                            ),
-                          )}
+                          {card.responsibilities.map((responsibility, index) => (
+                            <li key={index} className="text-lg">
+                              {responsibility}
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>

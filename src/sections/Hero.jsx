@@ -11,6 +11,8 @@ const HeroExperience = lazy(
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const rotatingWords = words.slice(0, 4);
+  const loopWords = [...rotatingWords, rotatingWords[0]];
 
   useGSAP(
     () => {
@@ -23,44 +25,67 @@ const Hero = () => {
           opacity: 1,
           y: 0,
         });
-        return;
+      } else {
+        gsap.set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
+          willChange: "transform, opacity",
+        });
+
+        const tl = gsap.timeline({
+          defaults: { ease: "power3.out" },
+        });
+
+        tl.from(".hero-text h1", {
+          y: 56,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.12,
+        })
+          .from(
+            ".hero-copy",
+            {
+              y: 20,
+              opacity: 0,
+              duration: 0.55,
+            },
+            "-=0.35",
+          )
+          .from(
+            ".cta-wrapper",
+            {
+              y: 18,
+              opacity: 0,
+              duration: 0.5,
+            },
+            "-=0.3",
+          )
+          .set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
+            clearProps: "willChange",
+          });
       }
 
-      gsap.set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
-        willChange: "transform, opacity",
+      gsap.set(".hero-word-track", { yPercent: 0 });
+      const wordTl = gsap.timeline({
+        repeat: -1,
+        defaults: { ease: "power2.inOut" },
       });
 
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out" },
-      });
+      const stopIndex = rotatingWords.length;
+      wordTl.to({}, { duration: 1.1 });
 
-      tl.from(".hero-text h1", {
-        y: 56,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-      })
-        .from(
-          ".hero-copy",
-          {
-            y: 20,
-            opacity: 0,
+      for (let index = 1; index <= stopIndex; index += 1) {
+        wordTl
+          .to(".hero-word-track", {
+            yPercent: -100 * index,
             duration: 0.55,
-          },
-          "-=0.35",
-        )
-        .from(
-          ".cta-wrapper",
-          {
-            y: 18,
-            opacity: 0,
-            duration: 0.5,
-          },
-          "-=0.3",
-        )
-        .set([".hero-text h1", ".hero-copy", ".cta-wrapper"], {
-          clearProps: "willChange",
-        });
+          })
+          .to({}, { duration: index === stopIndex ? 0.2 : 1.05 });
+      }
+
+      wordTl
+        .set(".hero-word-track", {
+          yPercent: 0,
+        })
+        .to({}, { duration: 0.8 });
     },
     { scope: heroRef },
   );
@@ -84,11 +109,11 @@ const Hero = () => {
               <h1>
                 Shaping
                 <span className="slide">
-                  <span className="wrapper">
-                    {words.map((word, index) => (
+                  <span className="hero-word-track">
+                    {loopWords.map((word, index) => (
                       <span
                         key={index}
-                        className="flex items-center md:gap-3 gap-1 pb-2"
+                        className="hero-word-item"
                       >
                         <img
                           src={word.imgPath}
