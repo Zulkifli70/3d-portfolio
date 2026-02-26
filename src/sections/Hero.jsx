@@ -37,7 +37,7 @@ const Hero = () => {
         tl.from(".hero-text h1", {
           y: 56,
           opacity: 0,
-          duration: 0.9,
+          duration: 2,
           stagger: 0.12,
         })
           .from(
@@ -64,28 +64,28 @@ const Hero = () => {
       }
 
       gsap.set(".hero-word-track", { yPercent: 0 });
+      const wordHoldDuration = 3;
+      const wordTransitionDuration = 0.55;
       const wordTl = gsap.timeline({
         repeat: -1,
         defaults: { ease: "power2.inOut" },
       });
 
       const stopIndex = rotatingWords.length;
-      wordTl.to({}, { duration: 1.1 });
+      wordTl.to({}, { duration: wordHoldDuration });
 
       for (let index = 1; index <= stopIndex; index += 1) {
         wordTl
           .to(".hero-word-track", {
             yPercent: -100 * index,
-            duration: 0.55,
+            duration: wordTransitionDuration,
           })
-          .to({}, { duration: index === stopIndex ? 0.2 : 1.05 });
+          .to({}, { duration: index === stopIndex ? 0 : wordHoldDuration });
       }
 
-      wordTl
-        .set(".hero-word-track", {
-          yPercent: 0,
-        })
-        .to({}, { duration: 0.8 });
+      wordTl.set(".hero-word-track", {
+        yPercent: 0,
+      });
     },
     { scope: heroRef },
   );
@@ -111,10 +111,7 @@ const Hero = () => {
                 <span className="slide">
                   <span className="hero-word-track">
                     {loopWords.map((word, index) => (
-                      <span
-                        key={index}
-                        className="hero-word-item"
-                      >
+                      <span key={index} className="hero-word-item">
                         <img
                           src={word.imgPath}
                           alt="person"

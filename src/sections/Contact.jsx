@@ -102,7 +102,7 @@ const Contact = () => {
                     <div className="arrow-wrapper">
                       <FaPaperPlane
                         aria-hidden="true"
-                        className="text-[#0f172a] text-sm transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                        className="text-cyan-200 text-sm transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                       />
                     </div>
                   </div>

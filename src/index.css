@@ -274,25 +274,26 @@ section {
   }
 
   .cta-button {
-    @apply px-4 py-4 rounded-lg border border-cyan-300/60 bg-black-200/90 flex justify-center items-center relative cursor-pointer overflow-hidden shadow-[0_0_20px_rgba(34,211,238,0.2)];
+    @apply px-4 py-4 rounded-lg border border-cyan-100/70 bg-[linear-gradient(135deg,#67e8f9_0%,#22d3ee_45%,#0ea5e9_100%)] flex justify-center items-center relative cursor-pointer overflow-hidden shadow-[0_10px_24px_rgba(14,165,233,0.35)] transition-all duration-500 ease-out;
 
-    .bg-circle {
-      @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2 
-        w-[120%] h-[120%] group-hover:size-10 group-hover:right-10
-        rounded-full bg-cyan-300 transition-all duration-500;
+    &:hover {
+      @apply border-cyan-50/90 shadow-[0_14px_30px_rgba(34,211,238,0.45)] -translate-y-0.5;
     }
 
     .text {
-      @apply uppercase md:text-lg text-white-50 transition-all duration-500
-        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
+      @apply uppercase md:text-lg font-semibold tracking-[0.08em] text-slate-950 translate-x-0
+        group-hover:text-slate-950 group-hover:-translate-x-4
+        transition-[transform,color,letter-spacing] duration-700
+        ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu;
     }
 
     .arrow-wrapper {
-      @apply group-hover:bg-white-50 bg-cyan-300/80 size-10 rounded-full absolute right-10 top-1/2 
-        -translate-y-1/2 flex justify-center items-center overflow-hidden;
+      @apply group-hover:bg-slate-900 bg-slate-950/90 size-10 rounded-full absolute right-10 top-1/2
+        -translate-y-1/2 flex justify-center items-center overflow-hidden transition-all duration-500 ease-out;
 
       img {
         @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500;
+        filter: brightness(0) invert(1);
       }
     }
   }
