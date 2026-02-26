@@ -5,17 +5,17 @@ const HeroLights = ({ isLowEnd = false }) => (
     {/* lamp's light - always present */}
     <spotLight
       position={[2, 5, 6]}
-      angle={0.15}
-      penumbra={0.2}
-      intensity={100}
+      angle={isLowEnd ? 0.2 : 0.15}
+      penumbra={0.25}
+      intensity={isLowEnd ? 120 : 100}
       color="white"
     />
     {/* bluish overhead lamp */}
     <spotLight
       position={[4, 5, 4]}
-      angle={0.3}
+      angle={isLowEnd ? 0.36 : 0.3}
       penumbra={0.5}
-      intensity={40}
+      intensity={isLowEnd ? 55 : 40}
       color="#4cc9f0"
     />
     {/* purplish side fill - skip on low-end */}

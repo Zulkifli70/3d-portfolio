@@ -32,14 +32,14 @@ const AppShowcase = () => {
         github: "https://github.com/Zulkifli70/cv-app",
         live: "https://zulkcv.vercel.app/",
       },
-      toko: {
-        id: "toko",
-        title: "Grocery store website",
-        tags: ["Astro", "Responsive UI", "Company Website"],
-        image: "/images/project/toko.png",
-        alt: "Grocery store website",
-        github: "https://github.com/Zulkifli70/TokoBuRohani",
-        live: "https://zulktoko.netlify.app/",
+      weather: {
+        id: "weather",
+        title: "Weather App",
+        tags: ["Astro", "Weather API", "Forecasting"],
+        image: "/images/project/weather.jpeg",
+        alt: "Weather App",
+        github: "https://github.com/Zulkifli70/WeatherApp",
+        live: "https://zulkcuaca.netlify.app/",
       },
       expense: {
         id: "expense",
@@ -78,7 +78,7 @@ const AppShowcase = () => {
     () => [
       {
         featured: projects.memoryGame,
-        side: [projects.cvBuilder, projects.toko],
+        side: [projects.cvBuilder, projects.weather],
       },
       {
         featured: projects.expense,

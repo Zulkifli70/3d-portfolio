@@ -20,6 +20,7 @@ const HeroExperience = () => {
 
   // On low-end devices, cap DPR at 1 to halve the pixel fill rate
   const dpr = isLowEnd ? [0.8, 1] : isMidRange ? [1, 1.5] : [1, 2];
+  const ambientIntensity = isLowEnd ? 0.35 : isMidRange ? 0.28 : 0.22;
 
   return (
     <Canvas
@@ -34,8 +35,13 @@ const HeroExperience = () => {
       shadows={!isMobile && !isLowEnd}
       performance={{ min: 0.5 }}
     >
-      {/* deep blue ambient */}
-      <ambientLight intensity={0.2} color="#1a1a40" />
+      {/* Keep low-end screens readable with a brighter but still moody base light */}
+      <ambientLight intensity={ambientIntensity} color="#1f2f55" />
+      <hemisphereLight
+        intensity={isLowEnd ? 0.35 : 0.2}
+        skyColor="#7aa2ff"
+        groundColor="#0b1020"
+      />
 
       <OrbitControls
         enablePan={false}
