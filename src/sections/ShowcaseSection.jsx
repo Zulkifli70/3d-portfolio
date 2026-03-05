@@ -16,7 +16,7 @@ const AppShowcase = () => {
         id: "memoryGame",
         title: "Pokemon Memory Game",
         description:
-          "Web Game built with React & TailwindCSS for a fast, user-friendly experience.",
+          "Pokemon Memory Card Game is an interactive web game where players must click each Pokemon card only once without repeating any selection. The cards shuffle after every turn to challenge memory, with score tracking, difficulty levels, and win/lose states.",
         tags: ["React", "TailwindCSS", "Game UI"],
         image: "/images/project/zulkmemory.jpeg",
         alt: "Pokemon Memory Game",
@@ -45,7 +45,7 @@ const AppShowcase = () => {
         id: "expense",
         title: "Expense Tracker",
         description:
-          "Track spending and budgets with a clean dashboard, fast interactions, and clear summaries.",
+          "A personal finance dashboard application to record transactions, monitor monthly budget limits, and view spending insights in one place.",
         tags: ["Nuxt.JS", "Charts", "State Management"],
         image: "/images/project/expense.png",
         alt: "Expense Tracker",

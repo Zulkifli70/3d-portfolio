@@ -282,7 +282,7 @@ section {
 
     .text {
       @apply uppercase md:text-lg font-semibold tracking-[0.08em] text-slate-950 translate-x-0
-        group-hover:text-slate-950 group-hover:-translate-x-4
+        group-hover:text-slate-950
         transition-[transform,color,letter-spacing] duration-700
         ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu;
     }

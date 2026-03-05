@@ -116,8 +116,8 @@ const techStackImgs = [
     imgPath: "/images/logos/TypeScript.png",
   },
   {
-    name: "Node JS",
-    imgPath: "/images/logos/Node.js.png",
+    name: "Nuxt JS",
+    imgPath: "/images/logos/nuxt.png",
   },
   {
     name: "MongoDB",
